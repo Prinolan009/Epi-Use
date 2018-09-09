@@ -5,18 +5,28 @@ import java.util.Date;
 public class Run {
 
 	public static void main(String[] args) throws ParseException {
-		/*ReadFiles rf=new ReadFiles();
-		rf.read();*/
+		OrganizationStructure O=new OrganizationStructure();
 		Person per=new Person();
-		per.read();
-		Sorting sort=new Sorting();
-		SortByDOB SBD=new SortByDOB();
-		//sort.FindPerson("Yurisha");
+		per.read("Workers.txt");
+		O.PrintStructure(per);
+		/*
+		per.read("Workers.txt");
+		
+		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+		  Date date1=format.parse("31-01-1994");
+		SortByDOB sob=new SortByDOB(date1);
+		sob.compareTo(per,3);
+		*/
+		
+		//SortByDOB SBD=new SortByDOB();
+		/*
 		 SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
 		  Date date1=format.parse("02-12-2005");
 		
-		SBD.FindOlder(date1);
+		SBD.FindOlder(date1);*/
 		
+		/*OrganizationStructure O=new OrganizationStructure();
+		O.PrintStructure();*/
 		
 	}
 

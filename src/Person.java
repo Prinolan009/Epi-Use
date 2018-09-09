@@ -17,7 +17,7 @@ public class Person {
 	public Person(){
 		//empty constructor
 	}
-	public Person(ArrayList <String> name,ArrayList <String> surname, ArrayList <Date> BDay, ArrayList <Integer> EmpNum, ArrayList <Double> Salary, ArrayList <String> Designate, ArrayList <String> Report){
+	/*public Person(ArrayList <String> name,ArrayList <String> surname, ArrayList <Date> BDay, ArrayList <Integer> EmpNum, ArrayList <Double> Salary, ArrayList <String> Designate, ArrayList <String> Report){
 		this.name=name;
 		this.surname=surname;
 		this.BDay=BDay;
@@ -27,62 +27,19 @@ public class Person {
 		this.Report=Report;
 		
 	}
-	
+	*/
 	//using a textfile to read information of individuals
-	public void read()throws ParseException{
-		Date dat=new Date();
-		int day, month, year;
-		 SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
-		  Date date1=format.parse("02-12-2001");
-		  Date date2=format.parse("12-09-1999");
-		  Date date3=format.parse("13-11-2016");
-		  Date date4=format.parse("13-11-2016");
-		  
-		  this.BDay.add(date1);
-		  this.BDay.add(date2);
-		  this.BDay.add(date3);
-		  this.BDay.add(date4);
-		
-		this.name.add("Prinolan");
-		this.name.add("Yurisha");
-		this.name.add("Neelesh");
-		this.name.add("Prinolan");
-		
-		this.surname.add("Govender");
-		this.surname.add("Goorun");
-		this.surname.add("Rambally");
-		this.surname.add("Pillay");
-		
-		
-		
-		
-		this.EmpNum.add(1);
-		this.EmpNum.add(2);
-		this.EmpNum.add(3);
-		this.EmpNum.add(4);
-		
-		this.Salary.add((double) 25000);
-		this.Salary.add((double) 25000);
-		this.Salary.add((double) 25000);
-		this.Salary.add((double) 25000);
-		
-		this.Designate.add("Trainee");
-		this.Designate.add("Boss");
-		this.Designate.add("Boss");
-		this.Designate.add("Trainee");
-		
-		this.Report.add("boss");
-		this.Report.add("boss");
-		this.Report.add("boss");
-		this.Report.add("boss");
-		
-		/*try {
-			Scanner contents=new Scanner(new FileReader("Workers.txt"));
+	public void read(String filename) throws ParseException{
+	
+		try {
+			Scanner contents=new Scanner(new FileReader(filename));
+			SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
 			contents.useDelimiter("/");//Delimiter used to separate info of workers details
+			Date d=new Date();
 			while(contents.hasNext()){
 				this.name.add(contents.next());
 				this.surname.add(contents.next());
-				//this.BDay.add(contents.);
+				this.BDay.add(format.parse(contents.next()));
 				this.EmpNum.add(Integer.parseInt(contents.next()));
 				this.Salary.add(Double.parseDouble(contents.next()));
 				this.Designate.add(contents.next());
@@ -90,9 +47,9 @@ public class Person {
 			}
 			contents.close();
 			} catch (FileNotFoundException e) {
-			
+			System.out.println("Error");
 				e.printStackTrace();
-			}*/
+			}
 		/*for(int i=0;i<2;i++){
 			System.out.println(this.name.get(i));
 			System.out.println(this.surname.get(i));
@@ -104,12 +61,67 @@ public class Person {
 		}*/
 		
 	}//ends read method
-	public ArrayList getName(){return this.name;}
-	public ArrayList getSurname(){return this.surname;}
-	public ArrayList getDOB(){return this.BDay;}
-	public ArrayList getEmpNum(){return this.EmpNum;}
-	public ArrayList getSalary(){return this.Salary;}
-	public ArrayList getDesignate(){return this.Designate;}
-	public ArrayList getReport(){return this.Report;}
+	public ArrayList<String> getName(){return this.name;}
+	public ArrayList<String> getSurname(){return this.surname;}
+	public ArrayList<Date> getDOB(){return this.BDay;}
+	public ArrayList<Integer> getEmpNum(){return this.EmpNum;}
+	public ArrayList<Double> getSalary(){return this.Salary;}
+	public ArrayList<String> getDesignate(){return this.Designate;}
+	public ArrayList<String> getReport(){return this.Report;}
 
 }
+/*	Date dat=new Date();
+int day, month, year;
+ SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+  Date date1=format.parse("02-12-2001");
+  Date date2=format.parse("12-09-1999");
+  Date date3=format.parse("13-11-2016");
+  Date date4=format.parse("13-11-2016");
+  Date date5=format.parse("13-11-2016");
+  
+  this.BDay.add(date1);
+  this.BDay.add(date2);
+  this.BDay.add(date3);
+  this.BDay.add(date4);
+  this.BDay.add(date5);
+
+this.name.add("John");
+this.name.add("Jane");
+this.name.add("Jim");
+this.name.add("Rodger");
+this.name.add("Susan");
+
+this.surname.add("Smith");
+this.surname.add("Doe");
+this.surname.add("Bean");
+this.surname.add("Wilco");
+this.surname.add("Roe");
+
+
+
+
+this.EmpNum.add(1);
+this.EmpNum.add(2);
+this.EmpNum.add(3);
+this.EmpNum.add(4);
+this.EmpNum.add(5);
+
+this.Salary.add((double) 700000);
+this.Salary.add((double) 600000);
+this.Salary.add((double) 650000);
+this.Salary.add((double) 25000);
+this.Salary.add((double) 250000);
+this.Salary.add((double) 100000);
+
+this.Designate.add("Manager");
+this.Designate.add("Employee");
+this.Designate.add("Employee");
+this.Designate.add("Trainee");
+this.Designate.add("Trainee");
+
+this.Report.add("N/A");
+this.Report.add("Manager");
+this.Report.add("Manager");
+this.Report.add("Employee");
+this.Report.add("Employee");
+*/
