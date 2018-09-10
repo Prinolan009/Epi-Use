@@ -9,9 +9,9 @@ public class Run {
 		Scanner kb=new Scanner(System.in);
 		Person per=new Person();
 		per.read("Workers.txt");
-		System.out.println("Enter a number: \n1)Question 1\n2)Question 2\n3)Question 3\n4)Question 4");
-		int choice=kb.nextInt();
-		
+	//	System.out.println("Enter a number: \n1)Question 1\n2)Question 2\n3)Question 3\n4)Question 4");
+		//int choice=kb.nextInt();
+		int choice=4;
 		if(choice==1){
 			Sorting sort=new Sorting();
 			sort.FindPerson("Jane");
@@ -26,10 +26,12 @@ public class Run {
 		
 		if(choice==3){
 			//still working on it
+			Question3 q=new Question3();
+			q.print(per);
 		}
 		if(choice==4){
 			Question4 qu=new Question4();
-			qu.printList(per);
+			qu.printList();
 		}
 	/*	OrganizationStructure O=new OrganizationStructure();
 		Person per=new Person();
