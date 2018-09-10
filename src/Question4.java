@@ -40,13 +40,13 @@ public class Question4 implements Comparable <Person>{
 		String Man="Manager";
 		String Emp="Employee";
 		String Tra="Trainee";
-		this.salary=this.ArrangeList(P, "Tra").get(0);//salary gets set to the highest value from the list (the first value)
+		this.salary=this.ArrangeList(P, Man).get(0);//salary gets set to the highest value from the list (the first value)
 		
 		//condition if size in tier=1
-		if(this.ArrangeList(P, "Manager").size()==1){
+		if(this.ArrangeList(P, Man).size()==1){
 			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
 				
-				if(		P.getDesignate().get(i).contains("Manager") //if the value contains the desired position
+				if(		P.getDesignate().get(i).contains(Man) //if the value contains the desired position
 						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
 				{
 					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
@@ -55,15 +55,11 @@ public class Question4 implements Comparable <Person>{
 			}
 		}//ends condition 1
 		
-		
-		/*System.out.println(this.salary);
-		System.out.println(this.compareTo(P));*/
-		
 		//condition 2: More than one employee in the tier
-		if(this.ArrangeList(P, "Tra").size()>1){
+		else if(this.ArrangeList(P, Man).size()>1){
 		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
 			
-			if(		P.getDesignate().get(i).contains("Tra") //if the value contains the desired position
+			if(		P.getDesignate().get(i).contains(Man) //if the value contains the desired position
 					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
 					&& this.compareTo(P)==1 					//implies the value is the highest
 					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
@@ -73,24 +69,29 @@ public class Question4 implements Comparable <Person>{
 			}
 		}
 		}//ends condition 2
-		/*System.out.println("--------------------------------------------------------");
-		this.salary=this.ArrangeList(P, "Employee").get(0);//salary gets set to the highest value from the list (the first value)
 		
-		for(int i=0;i<P.getSalary().size();i++){				//traverse through all employees salaries
-			if(		P.getDesignate().get(i).contains("Employee") //if the value contains the desired position
-					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
-					&& this.compareTo(P)==1 					//implies the value is the highest
-					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
-			{
-				
-				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
-			}
-		}
 		System.out.println("--------------------------------------------------------");
-		this.salary=this.ArrangeList(P, "Trainee").get(0);//salary gets set to the highest value from the list (the first value)
 		
-		for(int i=0;i<P.getSalary().size();i++){				//traverse through all employees salaries
-			if(		P.getDesignate().get(i).contains("Trainee") //if the value contains the desired position
+		//PRINTING FOR EMPLOYEES
+		this.salary=this.ArrangeList(P, Emp).get(0);//salary gets set to the highest value from the list (the first value)
+
+		if(this.ArrangeList(P, Emp).size()==1){
+			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
+				
+				if(		P.getDesignate().get(i).contains(Emp) //if the value contains the desired position
+						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
+				{
+					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
+										+" "+"-"+" "+"R"+P.getSalary().get(i));
+				}
+			}
+		}//ends condition 1
+		
+		//condition 2: More than one employee in the tier
+		else if(this.ArrangeList(P, Emp).size()>1){
+		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
+			
+			if(		P.getDesignate().get(i).contains(Emp) //if the value contains the desired position
 					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
 					&& this.compareTo(P)==1 					//implies the value is the highest
 					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
@@ -99,9 +100,41 @@ public class Question4 implements Comparable <Person>{
 				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
 			}
 		}
-		*/
-		//this.salary=this.temp.get(0);
-		//System.out.println(this.compareTo(P));
+		}//ends condition 2
+
+		
+System.out.println("--------------------------------------------------------");
+		
+		//PRINTING FOR Trainees
+		this.salary=this.ArrangeList(P, Tra).get(0);//salary gets set to the highest value from the list (the first value)
+
+		if(this.ArrangeList(P, Tra).size()==1){
+			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
+				
+				if(		P.getDesignate().get(i).contains(Tra) //if the value contains the desired position
+						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
+				{
+					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
+										+" "+"-"+" "+"R"+P.getSalary().get(i));
+				}
+			}
+		}//ends condition 1
+		
+		//condition 2: More than one employee in the tier
+		else if(this.ArrangeList(P, Tra).size()>1){
+		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
+			
+			if(		P.getDesignate().get(i).contains(Tra) //if the value contains the desired position
+					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
+					&& this.compareTo(P)==1 					//implies the value is the highest
+					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
+			{
+				
+				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
+			}
+		}
+		}//ends condition 2
+
 		}
 	
 	/*for(int i=0;i<P.getSalary().size();i++){
