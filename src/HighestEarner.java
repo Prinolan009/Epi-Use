@@ -4,6 +4,6 @@ import java.util.Collections;
 public class HighestEarner {
 
 	
-	Collections col=new ArrayList();
+	//Collections col=new ArrayList();
 	
 }

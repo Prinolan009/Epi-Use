@@ -8,7 +8,9 @@ public class Run {
 		OrganizationStructure O=new OrganizationStructure();
 		Person per=new Person();
 		per.read("Workers.txt");
-		O.PrintStructure(per);
+		//O.PrintStructure(per);
+		Question4 q4=new Question4();
+		q4.printList(per);
 		/*
 		per.read("Workers.txt");
 		
