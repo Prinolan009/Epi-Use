@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,7 +9,11 @@ public class Question4 implements Comparable <Person>{
 	private int len,item;
 	private ArrayList<Integer>EmpArr=new ArrayList<Integer>();
 	private ArrayList<Double>temp=new ArrayList<Double>();
+	Person P=new Person();
 	
+	public Question4() throws ParseException{
+		P.read("Workers.txt");
+	}
 	@Override
 	public int compareTo(Person per) {
 		// TODO Auto-generated method stub
@@ -20,7 +25,7 @@ public class Question4 implements Comparable <Person>{
 		return num;
 	}
 
-	public ArrayList<Double> ArrangeList(Person P, String pos){
+	public ArrayList<Double> ArrangeList(String pos){
 		ArrayList <Double> T=new ArrayList<>();
 		
 		for(int i=0;i<P.getSalary().size();i++){
@@ -36,17 +41,15 @@ public class Question4 implements Comparable <Person>{
 	}
 	
 	
-	public void printList(Person P){
-		String Man="Manager";
-		String Emp="Employee";
-		String Tra="Trainee";
-		this.salary=this.ArrangeList(P, Man).get(0);//salary gets set to the highest value from the list (the first value)
+	public void ConstructList(String position){
+
+		this.salary=this.ArrangeList( position).get(0);//salary gets set to the highest value from the list (the first value)
 		
 		//condition if size in tier=1
-		if(this.ArrangeList(P, Man).size()==1){
+		if(this.ArrangeList(position).size()==1){
 			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
 				
-				if(		P.getDesignate().get(i).contains(Man) //if the value contains the desired position
+				if(		P.getDesignate().get(i).contains(position) //if the value contains the desired position
 						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
 				{
 					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
@@ -56,10 +59,10 @@ public class Question4 implements Comparable <Person>{
 		}//ends condition 1
 		
 		//condition 2: More than one employee in the tier
-		else if(this.ArrangeList(P, Man).size()>1){
+		else if(this.ArrangeList( position).size()>1){
 		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
 			
-			if(		P.getDesignate().get(i).contains(Man) //if the value contains the desired position
+			if(		P.getDesignate().get(i).contains(position) //if the value contains the desired position
 					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
 					&& this.compareTo(P)==1 					//implies the value is the highest
 					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
@@ -71,76 +74,20 @@ public class Question4 implements Comparable <Person>{
 		}//ends condition 2
 		
 		System.out.println("--------------------------------------------------------");
-		
-		//PRINTING FOR EMPLOYEES
-		this.salary=this.ArrangeList(P, Emp).get(0);//salary gets set to the highest value from the list (the first value)
-
-		if(this.ArrangeList(P, Emp).size()==1){
-			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
-				
-				if(		P.getDesignate().get(i).contains(Emp) //if the value contains the desired position
-						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
-				{
-					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
-										+" "+"-"+" "+"R"+P.getSalary().get(i));
-				}
-			}
-		}//ends condition 1
-		
-		//condition 2: More than one employee in the tier
-		else if(this.ArrangeList(P, Emp).size()>1){
-		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
-			
-			if(		P.getDesignate().get(i).contains(Emp) //if the value contains the desired position
-					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
-					&& this.compareTo(P)==1 					//implies the value is the highest
-					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
-			{
-				
-				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
-			}
-		}
-		}//ends condition 2
-
-		
-System.out.println("--------------------------------------------------------");
-		
-		//PRINTING FOR Trainees
-		this.salary=this.ArrangeList(P, Tra).get(0);//salary gets set to the highest value from the list (the first value)
-
-		if(this.ArrangeList(P, Tra).size()==1){
-			for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
-				
-				if(		P.getDesignate().get(i).contains(Tra) //if the value contains the desired position
-						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
-				{
-					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
-										+" "+"-"+" "+"R"+P.getSalary().get(i));
-				}
-			}
-		}//ends condition 1
-		
-		//condition 2: More than one employee in the tier
-		else if(this.ArrangeList(P, Tra).size()>1){
-		for(int i=0;i<P.getSalary().size();i++){//traverse through all employees salaries
-			
-			if(		P.getDesignate().get(i).contains(Tra) //if the value contains the desired position
-					&&P.getSalary().get(i)==this.salary 		//salary among workers is the highest 
-					&& this.compareTo(P)==1 					//implies the value is the highest
-					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
-			{
-				
-				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
-			}
-		}
-		}//ends condition 2
-
-		}
-	
-	/*for(int i=0;i<P.getSalary().size();i++){
-	if(P.getDesignate().get(i).contains("Employee") && this.salary==this.ArrangeList(P, "Employee").get(0)){
-		System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
 	}
-}*/
+	
+	public void printList(){
+	String Man="Manager";
+	String Emp="Employee";
+	String Tra="Trainee";
+	
+	ConstructList(Man);
+	ConstructList(Emp);
+	ConstructList(Tra);
+	}
+	
+	
 	
 }
+
+
