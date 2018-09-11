@@ -8,11 +8,11 @@ import Worker.Person;
 public class Run {
 
 	public static void main(String[] args) throws ParseException {
-		/*Person per=new Person();
+		Person per=new Person();
 		per.read("Workers.txt");
 		SortByName sbn=new SortByName();
-		sbn.FindPerson("John");*/
-System.out.println("Hi");
+		sbn.FindPerson("john");
+//System.out.println("Hi");
 	}
 
 }

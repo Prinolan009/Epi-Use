@@ -8,26 +8,64 @@ import java.util.Scanner;
 import Worker.Person;
 
 public class SortByName {
-
+//aaa
 	public void FindPerson(String name) throws ParseException{
 		//question 1 from assessment
 		boolean found=false;
-		name.toLowerCase();
+		//name=name.toLowerCase();
+		
 		Person per=new Person();
 		per.read("Workers.txt");
-		
+		Scanner kb=new Scanner(System.in);
 		int counter=0;
+		int choice=0;
+		boolean flag=false;
 		/*for(int i=0;i<temp.size();i++){
 			System.out.println(temp.get(i));
 		}*/
-		
-		
-		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+		int count=0;
+		String temp="";
+		int num=0;
+		//checks if more than 1 employee exists with the same name
 		for(int i=0;i<per.getName().size();i++){
-			per.getName().get(i).toLowerCase();
+			temp=per.getName().get(i).trim();
+			temp=temp.toLowerCase();
+			name=name.toLowerCase();
+			if(name.equals(temp)){
+				count++;
+			}
+		}
+		
+		System.out.println(count);
+		while(choice==0 || choice>2){
+			if(count>1){
+				System.out.println("More than 1 employee exists with that name");
+				System.out.println("1) Display all workers with the name: "+name);
+				System.out.println("2) Search by Employer ID");
+				choice=kb.nextInt();
+				
+				if(choice==2){
+					System.out.println("Enter worker ID");
+					num=kb.nextInt();
+				}
+				//num=kb.nextInt();
+				if(choice>3){
+					System.out.println("Invalid entry");
+				}
+			}
+		}
+		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+		
+		
+		
+		for(int i=0;i<per.getName().size();i++){
+			temp=per.getName().get(i).trim();//removes spacing
+			temp=temp.toLowerCase();//converts to lower case
+			name=name.toLowerCase();//converts to lower case
 			
+			if(choice==1){
 			
-			if(per.getName().get(i).contains(name)){//only one worker with the name
+			if(temp.equals(name) ){//only one worker with the name
 				found=true;
 				System.out.println("\nName:\t\t\t"+per.getName().get(i));
 				System.out.println("Surname:\t\t"+per.getSurname().get(i));
@@ -38,12 +76,16 @@ public class SortByName {
 				System.out.println("Reports to:\t\t"+per.getReport().get(i));
 				
 			}
+			}//ends choice ==1
 			//checks if more than 1 worker has the same name
-			/*if( count>1){//more than  1 employee with the searched name
-				System.out.println("More than 1 employee exists with that name, search by employee number");
-				num=kb.nextInt();
+			if( choice==2){//more than  1 employee with the searched name
+				
+				
 				for(int j=0;j<per.getEmpNum().size();j++){
-					if(per.getEmpNum().get(j).equals(num)){
+					//System.out.println("num"+num);
+					int id=per.getEmpNum().iterator().next();
+					System.out.println("emp"+id);
+					if(id==num){
 						System.out.println("Name:\t\t\t"+per.getName().get(i));
 						System.out.println("Surname:\t\t"+per.getSurname().get(i));
 						System.out.println("DOB:\t\t\t"+format.format(per.getDOB().get(i)));
@@ -51,10 +93,15 @@ public class SortByName {
 						System.out.println("Salary:\t\t\t"+per.getSalary().get(i));
 						System.out.println("Designation:\t\t"+per.getDesignate().get(i));
 						System.out.println("Reports to:\t\t"+per.getReport().get(i));
+						//flag=true;
+						break;
 					}
-				}
+					if(flag==false){
+						System.out.println("No employee found with the ID: "+num);
+					}
+				}//ends employee number for loop
 				break;
-			}*/
+			}
 			
 			if(found==false && i==(per.getName().size()-1)) {
 				System.out.println("No employee found");
