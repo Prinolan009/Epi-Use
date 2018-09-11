@@ -1,6 +1,8 @@
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import Worker.Person;
+
 public class OrganizationStructure {
 //question 3
 	public void PrintStructure(Person p){

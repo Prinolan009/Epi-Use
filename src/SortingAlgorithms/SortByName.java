@@ -1,10 +1,13 @@
+package SortingAlgorithms;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Sorting {
+import Worker.Person;
+
+public class SortByName {
 
 	public void FindPerson(String name) throws ParseException{
 		//question 1 from assessment

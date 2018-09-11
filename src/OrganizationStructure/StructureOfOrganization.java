@@ -1,10 +1,13 @@
+package OrganizationStructure;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Question3 {
+import Worker.Person;
+
+public class StructureOfOrganization {
 //Printing the organizational structure 
 //Structure follows: Manager -> Employee -> Trainee
 	
@@ -15,22 +18,17 @@ public class Question3 {
 	
 	
 	public void print(Person P){
+		
+		//method assigns a rank according to the reportTo variable
+		//Using this rank, it is possible to determine a general output
+		//Manager reports to no one
+		//Employee reports to manager
+		//Some employees may report to a senior employee
+		//All trainees report to employees
 		ArrayList<Integer> rankList=new ArrayList<Integer>();
-int rank=0;
+
 		for(int i=0;i<P.getDesignate().size();i++){
-			/*if(P.getDesignate().get(i).contains("Manager")){
-			//Temp.add(P.getName().get(i));
-			rankList.add(P.getEmpNum().get(i));
-			}
-			if(P.getDesignate().get(i).contains("Employee")){
-			//	Temp.add(P.getName().get(i));
-				rankList.add(P.getEmpNum().get(i));
-			}
-			if(P.getDesignate().get(i).contains("Trainee")){
-			//	Temp.add(P.getName().get(i));
-				rankList.add(P.getEmpNum().get(i));
-			}*/
-			//Assign ranks to 4= Highest member, 1=lowest member
+		
 			 if(P.getReport().get(i).contains("NA")){
 				 rankList.add(4);
 			 }

@@ -1,8 +1,11 @@
+package FindingAlgorithms;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Question4 implements Comparable <Person>{
+import Worker.Person;
+
+public class FindBySalary implements Comparable <Person>{
 
 	private String name, surname, position;
 	private double salary;
@@ -11,7 +14,7 @@ public class Question4 implements Comparable <Person>{
 	private ArrayList<Double>temp=new ArrayList<Double>();
 	Person P=new Person();
 	
-	public Question4() throws ParseException{
+	public FindBySalary() throws ParseException{
 		P.read("Workers.txt");
 	}
 	@Override

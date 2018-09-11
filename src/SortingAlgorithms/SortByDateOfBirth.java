@@ -1,13 +1,19 @@
+package SortingAlgorithms;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SortByDOB {
+import Worker.Person;
+
+//import Person;
+
+public class SortByDateOfBirth {
 
 	ArrayList<Integer>position =new ArrayList<Integer>();
 	public Date date;
-	public SortByDOB(Date date){
+	public SortByDateOfBirth(Date date){
 		this.date=date;
 		
 	}
@@ -18,18 +24,19 @@ public class SortByDOB {
 		//State2=After
 		//State3=On the date
 		
-		
+		//Person per=new Person();
 		for(int i=0;i<p.getDOB().size();i++){
 			if(p.getDOB().get(i).compareTo(this.date)<0 && state==1){
-				PrintList(p,i);
+				
+				this.PrintList(p,i);
 				
 			}
 			else if(p.getDOB().get(i).compareTo(this.date)>0 && state==2){
-				PrintList(p,i);
+				this.PrintList(p,i);
 			
 			}
 			else if(p.getDOB().get(i).compareTo(this.date)==0 && state==3){
-				PrintList(p,i);
+				this.PrintList(p,i);
 				
 			}
 		}
@@ -40,15 +47,16 @@ public class SortByDOB {
 
 
 public void PrintList(Person p,int i){
+	System.out.println("HHHHH");
 	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-	System.out.println("Name:\t\t\t"+p.getName().get(i));
+	System.out.print("Name:\t\t\t"+p.getName().get(i));
 	System.out.println("Surname:\t\t"+p.getSurname().get(i));
 	System.out.println("DOB:\t\t\t"+sdf.format(p.getDOB().get(i)));
 	System.out.println("Employee Num:\t\t"+p.getEmpNum().get(i));
 	System.out.println("Salary:\t\t\t"+p.getSalary().get(i));
 	System.out.println("Designation:\t\t"+p.getDesignate().get(i));
 	System.out.println("Reports to:\t\t"+p.getReport().get(i));
-	System.out.println("---------------------------------------------------");
+	//System.out.println("---------------------------------------------------");
 }
 	
 
@@ -131,4 +139,5 @@ public void PrintList(Person p,int i){
 	
 	
 	
+
 
