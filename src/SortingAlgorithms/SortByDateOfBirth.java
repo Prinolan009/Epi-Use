@@ -4,19 +4,55 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 import Worker.Person;
 
 //import Person;
 
 public class SortByDateOfBirth {
-
+	private int state;
+	
+	private Date date;
+	
 	ArrayList<Integer>position =new ArrayList<Integer>();
-	public Date date;
-	public SortByDateOfBirth(Date date){
-		this.date=date;
+	
+	
+	public SortByDateOfBirth(){
+		
 		
 	}
+	
+	public void OptionsList() throws ParseException{
+		Scanner kb=new Scanner(System.in);
+		int choice=0;
+		boolean valid=false;
+		String temp="";
+		
+		//while(valid==false){
+		System.out.println("Enter date of birth: Format(dd-mm-yyyy)");
+		temp=kb.nextLine();
+		
+		
+		
+		//}
+		//convert string to date
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		sdf.setLenient(false);
+		this.date=sdf.parse(temp);
+		
+		
+		while(this.state==0 || this.state>3){
+		System.out.println("Please select an option:\n1)Before the date\n2)After the date\n3)On the Date");
+		this.state=kb.nextInt();
+		if(this.state>3){
+			System.out.println("Invalid entry please pick again");
+		}
+		}
+		
+		
+	} 
+	
 	public void compareTo(Person p, int state) {
 		/*Method will allow the user to check for people born before, after and on the specified dates*/
 		int res=0;
@@ -28,15 +64,15 @@ public class SortByDateOfBirth {
 		for(int i=0;i<p.getDOB().size();i++){
 			if(p.getDOB().get(i).compareTo(this.date)<0 && state==1){
 				
-				this.PrintList(p,i);
+				this.PrintList(p,this.state);
 				
 			}
 			else if(p.getDOB().get(i).compareTo(this.date)>0 && state==2){
-				this.PrintList(p,i);
+				this.PrintList(p,this.state);
 			
 			}
 			else if(p.getDOB().get(i).compareTo(this.date)==0 && state==3){
-				this.PrintList(p,i);
+				this.PrintList(p,this.state);
 				
 			}
 		}
@@ -47,7 +83,7 @@ public class SortByDateOfBirth {
 
 
 public void PrintList(Person p,int i){
-	System.out.println("HHHHH");
+	
 	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	System.out.print("Name:\t\t\t"+p.getName().get(i));
 	System.out.println("Surname:\t\t"+p.getSurname().get(i));
