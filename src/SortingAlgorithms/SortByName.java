@@ -74,25 +74,26 @@ public class SortByName {
 				System.out.println("Salary:\t\t\t"+per.getSalary().get(i));
 				System.out.println("Designation:\t\t"+per.getDesignate().get(i));
 				System.out.println("Reports to:\t\t"+per.getReport().get(i));
-				
+				System.out.println("----------------------------------------------------------");
 			}
 			}//ends choice ==1
 			//checks if more than 1 worker has the same name
-			if( choice==2){//more than  1 employee with the searched name
+			
+			if(choice==2){//more than  1 employee with the searched name
 				
 				
 				for(int j=0;j<per.getEmpNum().size();j++){
 					//System.out.println("num"+num);
-					int id=per.getEmpNum().iterator().next();
-					System.out.println("emp"+id);
+					int id=per.getEmpNum().get(j);
+				//	System.out.println("emp"+id);
 					if(id==num){
-						System.out.println("Name:\t\t\t"+per.getName().get(i));
-						System.out.println("Surname:\t\t"+per.getSurname().get(i));
-						System.out.println("DOB:\t\t\t"+format.format(per.getDOB().get(i)));
-						System.out.println("Employee Num:\t\t"+per.getEmpNum().get(i));
-						System.out.println("Salary:\t\t\t"+per.getSalary().get(i));
-						System.out.println("Designation:\t\t"+per.getDesignate().get(i));
-						System.out.println("Reports to:\t\t"+per.getReport().get(i));
+						System.out.println("Name:\t\t\t"+per.getName().get(j));
+						System.out.println("Surname:\t\t"+per.getSurname().get(j));
+						System.out.println("DOB:\t\t\t"+format.format(per.getDOB().get(j)));
+						System.out.println("Employee Num:\t\t"+per.getEmpNum().get(j));
+						System.out.println("Salary:\t\t\t"+per.getSalary().get(j));
+						System.out.println("Designation:\t\t"+per.getDesignate().get(j));
+						System.out.println("Reports to:\t\t"+per.getReport().get(j));
 						//flag=true;
 						break;
 					}
