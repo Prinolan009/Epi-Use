@@ -20,8 +20,8 @@ public class Person {
 	}
 	
 	//using a textfile to read information of individuals
-	public void read(String filename) throws ParseException{
-	
+	public void read() throws ParseException{
+	String filename="Workers.txt";
 		try {
 			Scanner contents=new Scanner(new FileReader(filename));
 			SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
