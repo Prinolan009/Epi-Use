@@ -15,7 +15,7 @@ public class FindBySalary implements Comparable <Person>{
 	Person P=new Person();
 	
 	public FindBySalary() throws ParseException{
-		P.read("Workers.txt");
+		P.read();
 	}
 	@Override
 	public int compareTo(Person per) {
@@ -55,7 +55,7 @@ public class FindBySalary implements Comparable <Person>{
 				if(		P.getDesignate().get(i).contains(position) //if the value contains the desired position
 						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
 				{
-					System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)
+					System.out.println(P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)
 										+" "+"-"+" "+"R"+P.getSalary().get(i));
 				}
 			}
@@ -71,7 +71,7 @@ public class FindBySalary implements Comparable <Person>{
 					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
 			{
 				
-				System.out.println(P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
+				System.out.println(P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
 			}
 		}
 		}//ends condition 2
@@ -80,6 +80,7 @@ public class FindBySalary implements Comparable <Person>{
 	}
 	
 	public void printList(){
+	System.out.println("The following list displays the hightest paid workers per tier\n");
 	String Man="Manager";
 	String Emp="Employee";
 	String Tra="Trainee";

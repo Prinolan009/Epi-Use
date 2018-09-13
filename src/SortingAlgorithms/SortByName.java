@@ -15,7 +15,7 @@ public class SortByName {
 		//name=name.toLowerCase();
 		
 		Person per=new Person();
-		per.read("Workers.txt");
+		per.read();
 		Scanner kb=new Scanner(System.in);
 		int counter=0;
 		int choice=0;
