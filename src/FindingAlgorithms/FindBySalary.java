@@ -55,8 +55,8 @@ public class FindBySalary implements Comparable <Person>{
 				if(		P.getDesignate().get(i).contains(position) //if the value contains the desired position
 						&& P.getSalary().get(i)==this.salary )		//salary among workers is the highest 
 				{
-					System.out.println(P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)
-										+" "+"-"+" "+"R"+P.getSalary().get(i));
+					System.out.println(this.PersonDetails(i));
+
 				}
 			}
 		}//ends condition 1
@@ -71,7 +71,7 @@ public class FindBySalary implements Comparable <Person>{
 					|| this.compareTo(P)==0)					//used incase more than one worker recieves the highest pay per tier
 			{
 				
-				System.out.println(P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i));
+				System.out.println(this.PersonDetails(i));
 			}
 		}
 		}//ends condition 2
@@ -90,6 +90,9 @@ public class FindBySalary implements Comparable <Person>{
 	ConstructList(Tra);
 	}
 	
+	public String PersonDetails(int i){
+		return P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i);
+	}
 	
 	
 }
