@@ -1,4 +1,4 @@
-package Worker;
+package JUnitTests;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 
 import org.junit.Test;
 
-public class PersonTestCase {
+import Worker.Person;
+
+public class TestPerson {
 
 	@Test
 	public void test() throws ParseException {
@@ -19,7 +21,6 @@ public class PersonTestCase {
 				"\nDOB:\t\t\t"+sdf.format(p.getDOB().get(0))+"\nEmployee Num:\t\t"+p.getEmpNum().get(0)
 				+"\nSalary:\t\t\t"+p.getSalary().get(0)+"\nDesignation:\t\t"+p.getDesignate().get(0)
 				+"\nReports to:\t\t"+p.getReport().get(0)+	"\n---------------------------------------------------",output);
-		
 	}
 
 }

@@ -24,7 +24,7 @@ public class FindBySalary implements Comparable <Person>{
 		/*Use the salary amount and compare the value to the arraylist by iteration*/
 		/*compare method works also if there exist two individuals with the same salary as the highest*/
 		int num=0;
-		num= Double.compare( per.getSalary().iterator().next(),this.salary);
+		num= Double.compare(per.getSalary().iterator().next(),this.salary);
 		return num;
 	}
 
@@ -32,7 +32,7 @@ public class FindBySalary implements Comparable <Person>{
 		ArrayList <Double> T=new ArrayList<>();
 		
 		for(int i=0;i<P.getSalary().size();i++){
-			if(P.getDesignate().get(i).contains(pos)){
+			if(P.getDesignate().get(i).equals(pos)){
 				T.add(P.getSalary().get(i));
 			}
 		}
@@ -91,7 +91,8 @@ public class FindBySalary implements Comparable <Person>{
 	}
 	
 	public String PersonDetails(int i){
-		return P.getDesignate().get(i).trim()+":"+P.getName().get(i).trim()+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i);
+		return P.getDesignate().get(i)+":"+P.getName().get(i)+" "+P.getSurname().get(i)+" "+"-"+" "+"R"+P.getSalary().get(i);
+	
 	}
 	
 	

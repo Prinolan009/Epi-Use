@@ -66,25 +66,25 @@ public class StructureOfOrganization {
 			
 			if(rankList.get(i)==4){
 				spacing(maxRank,rankList.get(i));
-				details(P,i);
+				System.out.println(details(P,i));
 			//System.out.print(P.getName().get(i).trim()+" "+P.getSurname().get(i)+":"+P.getDesignate().get(i)+"\n|>");
 			}
 			if(rankList.get(i)==3){
 				spacing(maxRank,rankList.get(i));
-				details(P,i);
+				System.out.println(details(P,i));
 
 				//System.out.print(P.getSurname().get(i)+":"+P.getDesignate().get(i)+"\n|>");
 			}
 			if(rankList.get(i)==2){
 				spacing(maxRank,rankList.get(i));
-				details(P,i);
+				System.out.println(details(P,i));
 
 				//System.out.print(P.getSurname().get(i)+":"+P.getDesignate().get(i)+"\n|>");
 				}
 			if(rankList.get(i)==1){
 				//System.out.print("\t\t\t");
 				spacing(maxRank,rankList.get(i));
-				details(P,i);
+				System.out.println(details(P,i));
 
 				//System.out.print(P.getSurname().get(i)+":"+P.getDesignate().get(i)+"");
 				}
@@ -92,8 +92,8 @@ public class StructureOfOrganization {
 	}
 	
 	
-	public void details(Person P, int i){
-		System.out.println(P.getName().get(i).trim()+" "+P.getSurname().get(i).trim()+":"+P.getDesignate().get(i))	;
+	public String details(Person P, int i){
+		return P.getName().get(i)+" "+P.getSurname().get(i)+":"+P.getDesignate().get(i)	;
 
 	}
 	
