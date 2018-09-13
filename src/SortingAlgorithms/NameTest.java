@@ -10,7 +10,7 @@ import org.junit.Test;
 import Worker.Person;
 
 public class NameTest {
-//John/Smith/31-01-1994/8/700000/Manager/NA/
+
 	@Test
 	public void test() throws ParseException {
 		SortByName name=new SortByName();
