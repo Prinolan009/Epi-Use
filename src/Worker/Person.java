@@ -44,6 +44,8 @@ public class Person {
 	
 		
 	}//ends read method
+	
+	//return methods
 	public ArrayList<String> getName(){return this.name;}
 	public ArrayList<String> getSurname(){return this.surname;}
 	public ArrayList<Date> getDOB(){return this.BDay;}
@@ -52,5 +54,12 @@ public class Person {
 	public ArrayList<String> getDesignate(){return this.Designate;}
 	public ArrayList<String> getReport(){return this.Report;}
 
+	public String toString(String name, String surname, Date dob, int num, double sal, String designate, String reportTo){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		return "\nName:\t\t\t"+name+"\nSurname:\t\t"+surname+
+				"\nDOB:\t\t\t"+sdf.format(dob)+"\nEmployee Num:\t\t"+num
+				+"\nSalary:\t\t\t"+sal+"\nDesignation:\t\t"+designate
+				+"\nReports to:\t\t"+reportTo+	"\n---------------------------------------------------";
+	}
 }
 
