@@ -28,13 +28,13 @@ public class Person {
 			contents.useDelimiter("/");//Delimiter used to separate info of workers details
 			//Date d=new Date();
 			while(contents.hasNext()){
-				this.name.add(contents.next());
-				this.surname.add(contents.next());
+				this.name.add(contents.next().trim());
+				this.surname.add(contents.next().trim());
 				this.BDay.add(format.parse(contents.next()));
 				this.EmpNum.add(Integer.parseInt(contents.next()));
 				this.Salary.add(Double.parseDouble(contents.next()));
-				this.Designate.add(contents.next());
-				this.Report.add(contents.next());
+				this.Designate.add(contents.next().trim());
+				this.Report.add(contents.next().trim());
 			}
 			contents.close();
 			} catch (FileNotFoundException e) {
