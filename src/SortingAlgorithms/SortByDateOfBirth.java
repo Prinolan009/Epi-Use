@@ -10,13 +10,13 @@ import Worker.Person;
 
 //import Person;
 
-public class SortByDateOfBirth implements Comparable <Person>{
+public class SortByDateOfBirth{
 	ArrayList<Integer>position =new ArrayList<Integer>();
 	private int counter;
 	private Date date;
 	private int state;
 	public SortByDateOfBirth(){
-		
+	Person p=new Person();	
 		
 	}
 	public void OptionsList() throws ParseException{
@@ -30,16 +30,13 @@ public class SortByDateOfBirth implements Comparable <Person>{
 		temp=kb.nextLine();
 		
 		
-		
-		//}
-		//convert string to date
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		sdf.setLenient(false);
-		this.date=sdf.parse(temp);
+		this.date=sdf.parse(temp.trim());
 		
 		
 		while(this.state==0 || this.state>3){
-		System.out.println("Please select an option:\n1)Before the date\n2)After the date\n3)On the Date");
+		System.out.println("Please select an option:\n1)After the date\n2)Before the date\n3)On the Date");
 		this.state=kb.nextInt();
 		if(this.state>3){
 			System.out.println("Invalid entry please pick again");
@@ -49,74 +46,33 @@ public class SortByDateOfBirth implements Comparable <Person>{
 		
 	} 
 	
-	public int compareTo(Person p) {
-		/*Method will allow the user to check for people born before, after and on the specified dates*/
-		int res=0;
-		
-		//State1=Before
-		//State2=After
-		//State3=On the date
-		
-		
-		for(int i=0;i<p.getDOB().size();i++){
-			if(p.getDOB().get(i).compareTo(this.date)<0 && this.state==1){
-				//PrintList(p,i);
-				this.counter++;
-				this.position.add(i);
-				res=1;
-			}
-			else if(p.getDOB().get(i).compareTo(this.date)>0 && this.state==2){
-				//PrintList(p,i);
-				this.counter++;
-				this.position.add(i);
-				res=2;
-			}
-			else if(p.getDOB().get(i).compareTo(this.date)==0 && this.state==3){
-				//PrintList(p,i);
-				this.counter++;
-				this.position.add(i);
-				res=0;
-			}
-		}
-		
-		return res;
-		
-	}
-	
-	public void PrintList(Person p){
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		System.out.println(this.counter);
-		for(int i=0;i<this.counter;i++){
-				if(this.compareTo(p)==0){
-					System.out.println("Name:\t\t\t"+p.getName().get(i-1));
-					System.out.println("Surname:\t\t"+p.getSurname().get(i-1));
-					System.out.println("DOB:\t\t\t"+sdf.format(p.getDOB().get(i-1)));
-					System.out.println("Employee Num:\t\t"+p.getEmpNum().get(i-1));
-					System.out.println("Salary:\t\t\t"+p.getSalary().get(i-1));
-					System.out.println("Designation:\t\t"+p.getDesignate().get(i-1));
-					System.out.println("Reports to:\t\t"+p.getReport().get(i-1));
-					System.out.println("---------------------------------------------------");
-				}	
-		}
-		
-	}
 
-/*
-public void PrintList(Person p){
-	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-	 for(int i=0;i<this.position.size();i++){
-	System.out.println("Name:\t\t\t"+p.getName().get(this.position.get(i)));
-	System.out.println("Surname:\t\t"+p.getSurname().get(this.position.get(i)));
-	System.out.println("DOB:\t\t\t"+sdf.format(p.getDOB().get(this.position.get(i))));
-	System.out.println("Employee Num:\t\t"+p.getEmpNum().get(this.position.get(i)));
-	System.out.println("Salary:\t\t\t"+p.getSalary().get(this.position.get(i)));
-	System.out.println("Designation:\t\t"+p.getDesignate().get(this.position.get(i)));
-	System.out.println("Reports to:\t\t"+p.getReport().get(this.position.get(i)));
-	System.out.println("---------------------------------------------------");
-	 }
-	  
-}
+	public void PrintList(Person p){
+		 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		for(int i=0;i<p.getDOB().size();i++){
+			
+			if(this.date.compareTo(p.getDOB().get(i))==0 && this.state==3){
+			//dates are the same
+				System.out.println(constructString(p,i));
+			}
+			if(this.date.after(p.getDOB().get(i)) && this.state==2 ){
+				//Born before specified date
+				System.out.println(constructString(p,i));
+				}
+			if(this.date.before(p.getDOB().get(i)) && this.state==1){
+				//Born after specified date
+				System.out.println(constructString(p,i));
+				}
+		}
+	}
 	
-*/
+	public String constructString(Person p,int i){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		return "\nName:\t\t\t"+p.getName().get(i)+"\nSurname:\t\t"+p.getSurname().get(i)+
+				"\nDOB:\t\t\t"+sdf.format(p.getDOB().get(i))+"\nEmployee Num:\t\t"+p.getEmpNum().get(i)
+				+"\nSalary:\t\t\t"+p.getSalary().get(i)+"\nDesignation:\t\t"+p.getDesignate().get(i)
+				+"\nReports to:\t\t"+p.getReport().get(i)+	"\n---------------------------------------------------";
+	}
+	
 	
 }
