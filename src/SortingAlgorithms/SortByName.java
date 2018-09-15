@@ -35,8 +35,10 @@ private String name;
 	}//ends option list
 	
 	
-	public void FindPerson(String name) throws ParseException{
-	
+	public void FindPerson() throws ParseException{
+	Scanner kb=new Scanner(System.in);
+	System.out.println("Please enter a workers first name");
+	String name=kb.nextLine();
 		boolean found=false;
 		Person per=new Person();
 		per.read();
@@ -56,8 +58,6 @@ private String name;
 			this.MoreThanOneWorker();//envokes method if more than one worker with the specified name
 		}
 		
-		
-	
 		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
 		
 		
@@ -105,10 +105,11 @@ private String name;
 	
 	public String constructString(Person p,int i){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		return "\nName:\t\t\t"+p.getName().get(i)+"\nSurname:\t\t"+p.getSurname().get(i)+
+		return p.toString(p.getName().get(i), p.getSurname().get(i), p.getDOB().get(i), p.getEmpNum().get(i), p.getSalary().get(i), p.getDesignate().get(i), p.getReport().get(i));
+		/*return "\nName:\t\t\t"+p.getName().get(i)+"\nSurname:\t\t"+p.getSurname().get(i)+
 				"\nDOB:\t\t\t"+sdf.format(p.getDOB().get(i))+"\nEmployee Num:\t\t"+p.getEmpNum().get(i)
 				+"\nSalary:\t\t\t"+p.getSalary().get(i)+"\nDesignation:\t\t"+p.getDesignate().get(i)
-				+"\nReports to:\t\t"+p.getReport().get(i)+	"\n---------------------------------------------------";
+				+"\nReports to:\t\t"+p.getReport().get(i)+	"\n---------------------------------------------------";*/
 	}
 	
 	

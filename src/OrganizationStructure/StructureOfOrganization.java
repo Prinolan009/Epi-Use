@@ -110,7 +110,7 @@ public class StructureOfOrganization {
 	
 	
 	
-	public void Print(Person P){
+	public void addRank(Person P){
 		ArrayList<Integer> rankList=new ArrayList<Integer>();
 		ArrayList<String> Temp=new ArrayList<String>();
 		
