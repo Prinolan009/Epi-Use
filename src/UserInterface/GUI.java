@@ -30,7 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
-import Main.Run;
+
 import SortingAlgorithms.SortByDateOfBirth;
 import SortingAlgorithms.SortByName;
 import Worker.Person;
@@ -96,7 +96,7 @@ public class GUI {
 		Main main=new Main();
 		
 		p.read();
-		Run ru=new Run();
+	
 		GUI.this.flag=false;
 		
 		if(comboBox.getSelectedItem().toString().equals("Question 2")){
@@ -112,6 +112,7 @@ public class GUI {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			File file = new File("src");
+			
         	String absolutePath = file.getPath(); 
         	
         	Runtime rt = Runtime.getRuntime();
@@ -119,7 +120,7 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				Run r=new Run();
+				
 				if(comboBox.getSelectedItem().toString().equals("Question 1")){
 					
 					try {
