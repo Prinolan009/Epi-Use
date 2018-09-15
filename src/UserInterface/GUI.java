@@ -36,6 +36,7 @@ import SortingAlgorithms.SortByName;
 import Worker.Person;
 
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 
 public class GUI {
 
@@ -107,9 +108,12 @@ public class GUI {
 		btnNewButton.setBounds(285, 94, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
+		//InputStream is=new InputStream();
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			File file = new File("src");
-        	String absolutePath = file.getAbsolutePath();
+        	String absolutePath = file.getPath(); 
+        	
         	Runtime rt = Runtime.getRuntime();
 
 			@Override
@@ -121,7 +125,7 @@ public class GUI {
 					try {
 						////java -flag -flag -cp terminal-based-program.jar
 			        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java"+ name+"\"");
-			        	
+			        	System.out.println(absolutePath);
 			        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
 			        
 			        				        
