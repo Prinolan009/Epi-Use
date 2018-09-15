@@ -58,7 +58,7 @@ public class Person {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		return "\nName:\t\t\t"+name+"\nSurname:\t\t"+surname+
 				"\nDOB:\t\t\t"+sdf.format(dob)+"\nEmployee Num:\t\t"+num
-				+"\nSalary:\t\t\t"+sal+"\nDesignation:\t\t"+designate
+				+"\nSalary:\t\t\tR"+sal+"\nDesignation:\t\t"+designate
 				+"\nReports to:\t\t"+reportTo+	"\n---------------------------------------------------";
 	}
 	
