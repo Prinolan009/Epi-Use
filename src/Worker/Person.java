@@ -18,9 +18,9 @@ public class Person {
 	public Person(){
 		//empty constructor
 	}
-	
+	//throws ParseException
 	//using a textfile to read information of individuals
-	public void read() throws ParseException{
+	public void read() throws ParseException {
 	String filename="Workers.txt";
 		try {
 			Scanner contents=new Scanner(new FileReader(filename));
@@ -32,7 +32,7 @@ public class Person {
 				this.surname.add(contents.next().trim());
 				this.BDay.add(format.parse(contents.next()));
 				this.EmpNum.add(Integer.parseInt(contents.next()));
-				this.Salary.add(Double.parseDouble(contents.next()));
+				this.Salary.add(this.round(Double.parseDouble(contents.next()), 2));
 				this.Designate.add(contents.next().trim());
 				this.Report.add(contents.next().trim());
 			}
@@ -60,6 +60,16 @@ public class Person {
 				"\nDOB:\t\t\t"+sdf.format(dob)+"\nEmployee Num:\t\t"+num
 				+"\nSalary:\t\t\t"+sal+"\nDesignation:\t\t"+designate
 				+"\nReports to:\t\t"+reportTo+	"\n---------------------------------------------------";
+	}
+	
+	public double round(double value, int places){
+		//used to round double values to 2 decimal places
+		if (places < 0) throw new IllegalArgumentException();
+
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
 	}
 }
 

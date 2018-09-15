@@ -29,6 +29,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+
+import Main.Run;
 import SortingAlgorithms.SortByDateOfBirth;
 import SortingAlgorithms.SortByName;
 import Worker.Person;
@@ -42,9 +44,9 @@ public class GUI {
 	private Thread reader;
 	private Thread reader2;
 	private boolean quit;
+	public int Selection;
 	Thread errorThrower;		
-	private final PipedInputStream pin=new PipedInputStream(); 
-	private final PipedInputStream pin2=new PipedInputStream(); 
+	
 	private JFrame frame;
 	private boolean flag;
 
@@ -64,29 +66,20 @@ public class GUI {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 * @throws ParseException 
-	 */
-	public GUI() throws ParseException {
+
+	public GUI(/*int i*/) throws ParseException {
 		initialize();
+		//GUI.this.Selection=i;
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 * @throws ParseException 
-	 */
-	private void initialize() throws ParseException {
+	
+	public void initialize() throws ParseException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 	
-		
-		//JButton btnNewButton = new JButton("Run");
-	
-		
 		
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
@@ -99,69 +92,123 @@ public class GUI {
 		
 		Scanner kb=new Scanner(System.in);
 		Person p=new Person();
-		p.read();
+		Main main=new Main();
 		
+		p.read();
+		Run ru=new Run();
 		GUI.this.flag=false;
 		
 		if(comboBox.getSelectedItem().toString().equals("Question 2")){
 			GUI.this.flag=true;
-			System.out.println("works");
+			
 		}
 		
 		JButton btnNewButton = new JButton("Run");
 		btnNewButton.setBounds(285, 94, 89, 23);
 		frame.getContentPane().add(btnNewButton);
+		
 		btnNewButton.addActionListener(new ActionListener() {
-			
+			File file = new File("src");
+        	String absolutePath = file.getAbsolutePath();
+        	Runtime rt = Runtime.getRuntime();
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
-				if(comboBox.getSelectedItem().toString().equals("Question 2")){
-					GUI.this.flag=true;
+				Run r=new Run();
+				if(comboBox.getSelectedItem().toString().equals("Question 1")){
+					
 					try {
-						openTerminal(2);
-					} catch (ParseException e) {
+						////java -flag -flag -cp terminal-based-program.jar
+			        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java"+ name+"\"");
+			        	
+			        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
+			        
+			        				        
+						
+					}  catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 				
 				
+				if(comboBox.getSelectedItem().toString().equals("Question 2")){
+				
+					
+						try {
+							rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByDateOfBirth\"");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+						
+					
+				}
+				if(comboBox.getSelectedItem().toString().equals("Question 3")){
+					
+					
+					try {
+						rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunOrganizationalStructure\"");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+			}
+				
+					if(comboBox.getSelectedItem().toString().equals("Question 4")){
+					
+					
+					try {
+						rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindBySalary\"");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+			}
+				
+				
 			}
 			
 			
-					
+					//RunOrganizationalStructure
 					
 				
 			
 		});
 	}
 	
-	public void openTerminal(int option) throws ParseException{
+	public int getSelection(){
+		
+		return this.Selection;
+		
+	}
+	
+	
+	public void openTerminal() throws ParseException{
 		Person P=new Person();
 		P.read();
+		
 		 try {
-		        String ss = null;
-		        Runtime obj = null;
-		        int choice=0;
-		        
-		        
-		        if(option==2){
+		       // if(option==2){
 		        
 		        	File file = new File("src");
 		        	String absolutePath = file.getAbsolutePath();
+		        	
 		        	Runtime rt = Runtime.getRuntime();////java -flag -flag -cp terminal-based-program.jar
-		        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java -jar Run(EPI_USE).jar\"");
+		        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java"+ name+"\"");
 		        	
-		        	
-		        
-		        }
-		        
-		     
+		        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
+		        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java -jar Run(EPI_USE).jar\"");
+
+		       // }
+  
 		    } catch (IOException e) {
-		        //System.out.println("catch:" + e.toString());
+		        System.out.println("catch:" + e.toString());
 		    }
 	}
 	
@@ -171,4 +218,5 @@ public class GUI {
 	
 	
 
-}
+}//ends class
+
