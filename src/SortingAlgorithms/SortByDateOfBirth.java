@@ -1,5 +1,6 @@
 package SortingAlgorithms;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +20,21 @@ public class SortByDateOfBirth{
 	Person p=new Person();	
 		
 	}
+	
+	public static boolean validate(String date){
+	
+	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	    try {
+	        sdf.parse(date);
+	        return true;
+	    }
+	    catch(ParseException ex) {
+	        return false;
+	    }
+		
+		
+	}
+	
 	public void OptionsList() throws ParseException{
 		Scanner kb=new Scanner(System.in);
 		int choice=0;
@@ -26,13 +42,21 @@ public class SortByDateOfBirth{
 		String temp="";
 		
 		//while(valid==false){
+		while(validate(temp)==false){
 		System.out.println("Enter date of birth: Format(dd-mm-yyyy)");
 		temp=kb.nextLine();
-		
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		sdf.setLenient(false);
-		this.date=sdf.parse(temp.trim());
+		
+		if(validate(temp)==false){
+			System.out.println("Incorrect format-Please input the date again");
+		}
+		else{
+			this.date=sdf.parse(temp.trim());
+		}
+		
+		}
+	//sdf.setLenient(false);
+		
 		
 		
 		while(this.state==0 || this.state>3){
