@@ -19,6 +19,7 @@ import java.io.OutputStreamWriter;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -110,13 +111,14 @@ public class GUI {
 		
 		//InputStream is=new InputStream();
 		
-		btnNewButton.addActionListener(new ActionListener() {
+			btnNewButton.addActionListener(new ActionListener() {
 			File file = new File("src");
 			
-        	String absolutePath = file.getPath(); 
+        	String absolutePath = file.getAbsolutePath(); 
         	
         	Runtime rt = Runtime.getRuntime();
-
+        	
+        	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -126,10 +128,11 @@ public class GUI {
 					try {
 						////java -flag -flag -cp terminal-based-program.jar
 			        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java"+ name+"\"");
-			        	System.out.println(absolutePath);
-			        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
 			        
-			        				        
+						System.out.println(absolutePath);
+			        
+			        	
+			        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
 						
 					}  catch (IOException e) {
 						// TODO Auto-generated catch block
