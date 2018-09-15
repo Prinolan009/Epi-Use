@@ -19,6 +19,8 @@ import java.io.OutputStreamWriter;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Scanner;
@@ -69,13 +71,13 @@ public class GUI {
 	}
 
 
-	public GUI(/*int i*/) throws ParseException {
+	public GUI(/*int i*/) throws ParseException, IOException {
 		initialize();
 		//GUI.this.Selection=i;
 	}
 
 	
-	public void initialize() throws ParseException {
+	public void initialize() throws ParseException, IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,11 +114,13 @@ public class GUI {
 		//InputStream is=new InputStream();
 		
 			btnNewButton.addActionListener(new ActionListener() {
-			File file = new File("src");
-			
-        	String absolutePath = file.getAbsolutePath(); 
+			File file = new File("");
+		
+        	String absolutePath = file.getAbsolutePath().concat("/src");
         	
         	Runtime rt = Runtime.getRuntime();
+        
+        	
         	
         	
 			@Override
@@ -124,22 +128,16 @@ public class GUI {
 				// TODO Auto-generated method stub
 				
 				if(comboBox.getSelectedItem().toString().equals("Question 1")){
-					
+
 					try {
-						////java -flag -flag -cp terminal-based-program.jar
-			        	//rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java"+ name+"\"");
-			        
 						System.out.println(absolutePath);
-			        
-			        	
-			        	rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
-						
-					}  catch (IOException e) {
+						rt.exec("cmd.exe /c cd \""+ absolutePath+ "\" & start cmd.exe /k \"java Main.RunFindByName\"");
+					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-				
+				//aaa
 				
 				if(comboBox.getSelectedItem().toString().equals("Question 2")){
 				
