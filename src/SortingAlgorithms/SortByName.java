@@ -37,46 +37,56 @@ private String name;
 	
 	public void FindPerson() throws ParseException{
 	Scanner kb=new Scanner(System.in);
+	
+	//user inputs the name of the individual
 	System.out.println("Please enter a workers first name");
 	String name=kb.nextLine();
-		boolean found=false;
+	
+	
+		boolean found=false;//is invoked when name is found
+		
+		//object creation
 		Person per=new Person();
 		per.read();
+		
 		boolean flag=false;
 		String temp="";
+		name=name.toLowerCase();//converts name to lowercase
 		
 		//checks if more than 1 employee exists with the same name
 		for(int i=0;i<per.getName().size();i++){
-			temp=per.getName().get(i).trim();
+			temp=per.getName().get(i);
 			temp=temp.toLowerCase();
-			name=name.toLowerCase();
+		
 			if(name.equals(temp)){
-				count++;
+				this.count++;//increments count when more than one employee exists with the name
 			}
 		}
-		if(count>1){
+		
+		if(this.count>1){
 			this.MoreThanOneWorker();//envokes method if more than one worker with the specified name
 		}
 		
-		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+		//SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
 		
 		
 		
 		for(int i=0;i<per.getName().size();i++){
 			temp=per.getName().get(i);//removes spacing
 			temp=temp.toLowerCase();//converts to lower case
-			name=name.toLowerCase();//converts to lower case
+			//name=name.toLowerCase();//converts to lower case
 			
-			if(choice==1){
+			if(choice==1 || this.count==1){
 			
-			if(temp.equals(name) ){//only one worker with the name
+			if(temp.equalsIgnoreCase(name) ){//only one worker with the name
+				
 				found=true;
 				System.out.println(this.constructString(per,i));
 				
 			}
 			}//ends choice ==1
 			//checks if more than 1 worker has the same name
-			
+		
 			if(choice==2){//more than  1 employee with the searched name
 				
 				

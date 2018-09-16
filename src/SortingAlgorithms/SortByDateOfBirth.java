@@ -4,8 +4,11 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+
+import org.w3c.dom.ranges.Range;
 
 import Worker.Person;
 
@@ -21,42 +24,46 @@ public class SortByDateOfBirth{
 		
 	}
 	
+
+	
 	public static boolean validate(String date){
-	Date temp=new Date();
-	boolean flag=false;
+	Date temp=null;
+	
+	
 	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+	  sdf.setLenient(false);
 	    try {
 	    	
-	        temp=sdf.parse(date);
-	        if(temp.getDay()<=31 && temp.getMonth()<=12 && temp.getYear()>0 && temp.getYear()<9999){
-	        	flag= true;
-	        }
-	        
+	    	
+	       temp=sdf.parse(date);
+	       return true;
+    
 	    }
 	    catch(ParseException ex) {
-	        flag=false;
+	        return false;
 	    }
-		return flag;
+	
 		
 	}
 	
 	public void OptionsList() throws ParseException{
+		
 		Scanner kb=new Scanner(System.in);
-		int choice=0;
 		boolean valid=false;
 		String temp="";
 		
 		//while(valid==false){
-		while(validate(temp)==false){
+		while(valid==false){
 		System.out.println("Enter date of birth: Format(dd-mm-yyyy)");
 		temp=kb.nextLine();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		
 		if(validate(temp)==false){
-			System.out.println("Incorrect format-Please input the date again");
+			System.out.println("Incorrect format-Please input the date again\n");
 		}
 		else{
 			this.date=sdf.parse(temp.trim());
+			valid=true;
 		}
 		
 		}

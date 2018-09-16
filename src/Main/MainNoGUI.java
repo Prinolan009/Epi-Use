@@ -29,6 +29,10 @@ public class MainNoGUI {
 			case 2:birth.OptionsList();birth.PrintList(p);returnToMenu();
 			case 3:soo.print(p); returnToMenu();
 			case 4:fbs.printList();returnToMenu();
+		
+			default:{
+				System.out.println("Error");
+			}
 			}
 		
 		}
@@ -64,7 +68,7 @@ public class MainNoGUI {
 			choice=kb.nextInt();
 			
 			if(choice==0 || choice>4){
-				System.out.println("Error please input an appropriate number\n");
+				System.out.println("Please input an appropriate number\n");
 			}
 			
 			}
