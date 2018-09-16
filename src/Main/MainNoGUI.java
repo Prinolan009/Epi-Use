@@ -17,27 +17,12 @@ public class MainNoGUI {
 		private static Scanner kb;
 		public static void main(String[] args) throws ParseException {
 			
-			//objects
-			SortByName sbn=new SortByName();
-			SortByDateOfBirth birth=new SortByDateOfBirth();
-			StructureOfOrganization soo=new StructureOfOrganization();
-			FindBySalary fbs=new FindBySalary();
-			Person p=new Person();
-			p.read();
-			switch(menu()){
-			case 1:sbn.FindPerson(); returnToMenu();
-			case 2:birth.OptionsList();birth.PrintList(p);returnToMenu();
-			case 3:soo.print(p); returnToMenu();
-			case 4:fbs.printList();returnToMenu();
-		
-			default:{
-				System.out.println("Error");
-			}
-			}
+			menu();
+			
 		
 		}
 
-		public static void returnToMenu(){
+		public static void returnToMenu() throws ParseException{
 			int choice=0;
 			kb=new Scanner(System.in);
 			
@@ -59,20 +44,36 @@ public class MainNoGUI {
 		}
 		
 		
-		public static int menu(){
+		public static void menu() throws ParseException{
 			int choice=0;
+			SortByName sbn=new SortByName();
+			SortByDateOfBirth birth=new SortByDateOfBirth();
+			StructureOfOrganization soo=new StructureOfOrganization();
+			FindBySalary fbs=new FindBySalary();
+			Person p=new Person();
+			p.read();
 			kb=new Scanner(System.in);
 			while(choice>4 || choice==0){
 			System.out.println("Enter a number corresponding to the question you wish to run");
 			System.out.println("1) Question 1\n2) Question 2\n3) Question 3\n4) Question 4\n");
 			choice=kb.nextInt();
 			
-			if(choice==0 || choice>4){
-				System.out.println("Please input an appropriate number\n");
+			switch(choice){
+			case 1:sbn.FindPerson(); returnToMenu();
+			case 2:birth.OptionsList();birth.PrintList(p);returnToMenu();
+			case 3:soo.print(p); returnToMenu();
+			case 4:fbs.printList();returnToMenu();
+		
+			default:{
+				System.out.println("Error-Please input an appropriate number\n");
 			}
+			}
+			/*if(choice==0 || choice>4){
+				
+			}*/
 			
 			}
-			return choice;
+			
 		}
 	
 
