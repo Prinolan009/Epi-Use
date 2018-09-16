@@ -1,5 +1,5 @@
 John/Smith/31-01-1994/1/700000/Manager/NA/
-John/Doe/24-01-1995/2/600000/Employee/Manager/
+Jane/Doe/24-01-1995/2/600000/Employee/Manager/
 Jim/Bean/09-03-1990/3/500000/Employee/Employee/
 Rodger/Wilco/06-01-2001/4/170000/Trainee/Employee/
 Susan/Roe/19-02-2003/5/200000/Trainee/Employee/
