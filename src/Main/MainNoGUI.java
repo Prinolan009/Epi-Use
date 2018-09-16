@@ -16,10 +16,7 @@ public class MainNoGUI {
 	
 		private static Scanner kb;
 		public static void main(String[] args) throws ParseException {
-			
 			menu();
-			
-		
 		}
 
 		public static void returnToMenu() throws ParseException{
@@ -53,9 +50,12 @@ public class MainNoGUI {
 			Person p=new Person();
 			p.read();
 			kb=new Scanner(System.in);
-			while(choice>4 || choice==0){
+			
+			
+			
+			
 			System.out.println("Enter a number corresponding to the question you wish to run");
-			System.out.println("1) Question 1\n2) Question 2\n3) Question 3\n4) Question 4\n");
+			System.out.println("1) Question 1\n2) Question 2\n3) Question 3\n4) Question 4\n5) Exit");
 			choice=kb.nextInt();
 			
 			switch(choice){
@@ -63,16 +63,13 @@ public class MainNoGUI {
 			case 2:birth.OptionsList();birth.PrintList(p);returnToMenu();
 			case 3:soo.print(p); returnToMenu();
 			case 4:fbs.printList();returnToMenu();
-		
+			case 5:System.out.println("----------Thank you----------");System.exit(0);
 			default:{
 				System.out.println("Error-Please input an appropriate number\n");
 			}
 			}
-			/*if(choice==0 || choice>4){
-				
-			}*/
 			
-			}
+		
 			
 		}
 	
