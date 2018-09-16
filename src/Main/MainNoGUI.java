@@ -38,10 +38,10 @@ public class MainNoGUI {
 			kb=new Scanner(System.in);
 			
 			while(choice==0 || choice>2){
-				System.out.println("Would you like to return to the main menu?\n1)Yes\n2)No, Exit system");
+				System.out.println("Would you like to return to the main menu?\n1)Yes\n2)No, Exit system\n");
 				choice=kb.nextInt();
 					if(choice==0 || choice>2){
-						System.out.println("Error:Please input an appropriate number");
+						System.out.println("Error:Please input an appropriate number\n");
 					}
 					if(choice==1){
 						//choice=0;

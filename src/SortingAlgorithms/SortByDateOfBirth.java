@@ -22,16 +22,21 @@ public class SortByDateOfBirth{
 	}
 	
 	public static boolean validate(String date){
-	
+	Date temp=new Date();
+	boolean flag=false;
 	  SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	    try {
-	        sdf.parse(date);
-	        return true;
+	    	
+	        temp=sdf.parse(date);
+	        if(temp.getDay()<=31 && temp.getMonth()<=12 && temp.getYear()>0 && temp.getYear()<9999){
+	        	flag= true;
+	        }
+	        
 	    }
 	    catch(ParseException ex) {
-	        return false;
+	        flag=false;
 	    }
-		
+		return flag;
 		
 	}
 	
