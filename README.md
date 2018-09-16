@@ -13,6 +13,9 @@ Some information was limited, and therefore assumptions were introduced in order
 *The manager is considered as the highest member and reports to no one, therefore his reportTo status is N/A
 *Some salaries, date of births and and employee numbers where made up
 
+Textfile
+The textfile is called "Workers.txt" and contains 5 workers. Each worker has a name, surname, date of birth, employee number, role and reportTo variable.
+
 Framework
 The program was built using Java (version 1.8.0) on Eclipse Neon(version 4.6.0). Data was read from a textfile labelled "Workers.txt".
 
